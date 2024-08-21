@@ -6,11 +6,12 @@ public:
             if (num % 2 == 0) {
                 // Number is even
                 num = num / 2;
+                count++;
             } else {
                 // Number is odd
                 num = num - 1;
+                count++;
             }
-            count++;
         }
         return count;
     }
