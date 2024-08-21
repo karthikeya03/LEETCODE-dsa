@@ -1,7 +1,7 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        int suma = 0, sumb = 0;
+        char suma = 0, sumb = 0;
         
         for (char ch : s)
             suma += ch;
