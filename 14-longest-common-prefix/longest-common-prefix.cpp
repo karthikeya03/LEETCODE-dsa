@@ -4,13 +4,16 @@ public:
         string prefix = "";
         if (strs.size() == 0)
             return "";
-        for (int i = 0; i < strs[0].size(); ++i) {
+        for (int i = 0; i < strs[0].length(); ++i) {
             char ch = strs[0][i];
-            for (string s : strs) {
-                if (ch == s[i])
+            for (string s :strs) 
+            {
+                if (ch == s[i]){
                     continue;
-                else
+                }
+                else{
                     return prefix;
+                }
             }
             prefix = prefix + ch;
         }
