@@ -2,7 +2,7 @@ class Solution {
 public:
     bool issub(string pattern, string word)
     {
-        return word.find(pattern)!= string::npos;
+        return word.find(pattern)!=string::npos;
     }
     int numOfStrings(vector<string>& patterns, string word) {
         int n=patterns.size();
