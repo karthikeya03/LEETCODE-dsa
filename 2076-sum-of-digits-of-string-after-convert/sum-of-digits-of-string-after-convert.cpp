@@ -1,27 +1,27 @@
+#include <iostream>
+#include <string>
+
 class Solution {
 public:
-    int getLucky(string s, int k) {
-        int sum=0;
-        for(char c : s)
-        {
-            int value=c-'a'+1;
-            while(value>0)
-            {
-                sum=sum+value%10;
-                value=value/10;
-            }
+    int getLucky(std::string s, int k) {
+        std::string numStr = "";
+
+        // Convert each character to its corresponding numeric value
+        for (char c : s) {
+            numStr += std::to_string(c - 'a' + 1);
         }
 
-        while(--k)
-        {
-            int final=0;
-            while(sum>0)
-            {
-                final=final+sum%10;
-                sum=sum/10;
+        int sum = 0;
+
+        // Repeat the sum process k times
+        while (k--) {
+            sum = 0;
+            for (char c : numStr) {
+                sum += c - '0';
             }
-            sum=final;
+            numStr = std::to_string(sum);
         }
+
         return sum;
     }
 };
