@@ -1,35 +1,47 @@
 class Solution {
 public:
     int robotSim(vector<int>& commands, vector<vector<int>>& obstacles) {
-        unordered_set<string> obs;
-        for (auto& obstacle : obstacles) {
-            obs.insert(to_string(obstacle[0]) + "," + to_string(obstacle[1]));
+        unordered_map<string,int>mp;
+        for(auto it:obstacles){
+            string key = to_string(it[0])+"+"+to_string(it[1]);
+            mp[key]++;
         }
+        vector<vector<int>>direc = {{-1,0},{0,1},{1,0},{0,-1}}; 
+        // according to order W N E S
 
-        vector<int> dx = {0, 1, 0, -1}; // North, East, South, West
-        vector<int> dy = {1, 0, -1, 0};
-        int dir = 0; // Start facing North
-        int x = 0, y = 0;
-        int ans = 0;
-
-        for (int c : commands) {
-            if (c == -1) { // Right turn
-                dir = (dir + 1) % 4;
-            } else if (c == -2) { // Left turn
-                dir = (dir + 3) % 4;
-            } else { // Move forward
-                for (int i = 0; i < c; ++i) {
-                    int nx = x + dx[dir];
-                    int ny = y + dy[dir];
-                    if (obs.find(to_string(nx) + "," + to_string(ny)) != obs.end()) {
-                        break; // Stop if there's an obstacle
+        int dir = 1; // i.e. north 
+        // 0: west, 1: north, 2: east, 3: south
+        int x=0,y=0;
+        int mxDist=0;
+        for(int it:commands){
+            if(it==-2){
+                // move left
+                if(dir==0) dir = 3;
+                else dir--;
+            }
+            else if(it==-1){
+                // move right
+                dir = (dir+1)%4;
+            }
+            else{
+                int k = it;
+                for(int i=1; i<=k; i++){
+                    int newX = x+direc[dir][0];
+                    int newY = y+direc[dir][1];
+                    
+                    string key = to_string(newX)+"+"+to_string(newY);
+                    if(mp.find(key)!=mp.end()){
+                        // obstacle has been found so don't go there
+                        break;
                     }
-                    x = nx;
-                    y = ny;
-                    ans = max(ans, x * x + y * y);
+                    x = newX, y=newY;
+                    mxDist = max(mxDist, x*x+y*y);
                 }
             }
-        }
-        return ans;
+        } 
+
+        return mxDist;
+
+
     }
 };
