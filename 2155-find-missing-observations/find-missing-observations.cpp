@@ -1,27 +1,25 @@
 class Solution {
 public:
     vector<int> missingRolls(vector<int>& rolls, int mean, int n) {
-        int m = rolls.size();
-        int total_sum = (m + n) * mean;
-        int current_sum = 0;
-        for (int roll : rolls) {
-            current_sum += roll;
-        }
-        int missing_sum = total_sum - current_sum;
+        int m=rolls.size();
+        int num=m+n;
+        int sum=mean*num;int sum1=0;
+
+        for(auto i:rolls) 
+        sum1+=i;
+        sum-=sum1;
+        if(sum<n || sum>n*6) return {};
+
+        vector<int>vec;
         
-        if (missing_sum < n || missing_sum > 6 * n) {
-            return {};
+        while(n){
+            int avg=sum/n;
+            if(n==1) vec.push_back(sum);
+            else vec.push_back(avg);
+            sum-=avg;
+            n--;
+
         }
-
-        int value = missing_sum / n;
-        int remainder = missing_sum % n;
-
-        vector<int> result(n, value);
-
-        for (int i = 0; i < remainder; ++i) {
-            result[i]++;
-        }
-        
-        return result;
+        return vec;
     }
 };
