@@ -17,8 +17,7 @@ public:
 
         while (n) {
             int avg = missing_sum / n;
-            if (n == 1) vec.push_back(missing_sum);
-            else vec.push_back(avg);
+            vec.push_back(avg);
             missing_sum -= avg;
             n--;
         }
