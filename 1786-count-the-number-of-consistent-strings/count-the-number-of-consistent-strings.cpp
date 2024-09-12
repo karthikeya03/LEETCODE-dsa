@@ -1,13 +1,19 @@
 class Solution {
 public:
     int countConsistentStrings(string allowed, vector<string>& words) {
-        int allowedMask = 0, count = 0;
-        for (char c : allowed) allowedMask |= (1 << (c - 'a'));
-
+        bool allowedSet[26] = {};
+        for (char c : allowed) allowedSet[c - 'a'] = true;
+        int count = 0;
+        
         for (const string& word : words) {
-            int wordMask = 0;
-            for (char c : word) wordMask |= (1 << (c - 'a'));
-            if ((wordMask & ~allowedMask) == 0) count++;
+            bool isConsistent = true;
+            for (char c : word) {
+                if (!allowedSet[c - 'a']) {
+                    isConsistent = false;
+                    break;
+                }
+            }
+            if (isConsistent) count++;
         }
         return count;
     }
