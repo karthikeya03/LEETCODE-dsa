@@ -1,20 +1,15 @@
 class Solution {
 public:
     int countConsistentStrings(string allowed, vector<string>& words) {
-        int count = 0;
-        for (const string& word : words) {
-            bool isConsistent = true;
-            
-            for (char c : word) {
-                if (allowed.find(c) == string::npos) {
-                    isConsistent = false;
-                    break;
-                }
-            }
-            if (isConsistent) {
-                count++;
-            }
-        }
-        return count;
+        bitset<26> s;
+        for (auto& c : allowed) s[c - 'a'] = 1;
+        int ans = 0;
+        auto check = [&](string& w) {
+            for (auto& c : w)
+                if (!s[c - 'a']) return false;
+            return true;
+        };
+        for (auto& w : words) ans += check(w);
+        return ans;
     }
 };
