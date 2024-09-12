@@ -1,18 +1,13 @@
 class Solution {
 public:
     int countConsistentStrings(string allowed, vector<string>& words) {
-        unordered_set<char> allowedSet(allowed.begin(), allowed.end());
-        int count = 0;
-        
+        int allowedMask = 0, count = 0;
+        for (char c : allowed) allowedMask |= (1 << (c - 'a'));
+
         for (const string& word : words) {
-            bool isConsistent = true;
-            for (char c : word) {
-                if (allowedSet.find(c) == allowedSet.end()) {
-                    isConsistent = false;
-                    break;
-                }
-            }
-            if (isConsistent) count++;
+            int wordMask = 0;
+            for (char c : word) wordMask |= (1 << (c - 'a'));
+            if ((wordMask & ~allowedMask) == 0) count++;
         }
         return count;
     }
