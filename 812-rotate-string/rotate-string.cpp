@@ -6,7 +6,7 @@ public:
             return false;
         }
         
-        for (int k = 0; k < n; ++k) {
+        for (int i = 0; i < n; ++i) {
             string rotated = s.substr(1) + s[0];
             s = rotated;
             if (s == goal) {
