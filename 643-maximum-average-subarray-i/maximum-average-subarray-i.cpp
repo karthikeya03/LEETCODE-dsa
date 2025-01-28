@@ -15,6 +15,6 @@ public:
             curr+=nums[r];
             maxx=max(maxx,curr);
         }
-    return static_cast<double>(maxx) / k; 
+      return maxx * 1.0 / k;
     }
 };
