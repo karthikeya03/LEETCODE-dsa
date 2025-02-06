@@ -1,11 +1,18 @@
 class Solution {
 public:
     int minPairSum(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        int maxSum = 0;
-        for (int i = 0; i < nums.size() / 2; i++) {
-            maxSum = max(maxSum, nums[i] + nums[nums.size() - 1 - i]);
+        int n=nums.size(); int i=0; int j=n-1;
+        std::sort(nums.begin(), nums.end());
+        vector<int> result;
+        while(i<j)
+        {
+            int sum=0;
+            sum=nums[i]+nums[j];
+            result.push_back(sum);
+            i++;
+            j--;
         }
-        return maxSum;
+        int maxx = *max_element(result.begin(), result.end());
+        return maxx;
     }
 };
