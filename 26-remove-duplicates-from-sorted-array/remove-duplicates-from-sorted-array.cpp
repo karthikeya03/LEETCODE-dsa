@@ -1,19 +1,14 @@
 class Solution {
 public:
-    int removeDuplicates(vector<int>& nums) {
-        int n = nums.size();
-        if (n == 0) return 0;
-    
-        int i = 0;
-        int j = 1; 
+    int removeDuplicates(std::vector<int>& nums) {
+        if (nums.empty()) return 0;
 
-        while (j < n) {
-            if (nums[i] != nums[j]) {
-                i++;           
-                nums[i] = nums[j];
+        int k = 1;
+        for (int i = 1; i < nums.size(); ++i) {
+            if (nums[i] != nums[i - 1]) {
+                nums[k++] = nums[i];
             }
-            j++;
         }
-        return i + 1;
+        return k;
     }
 };
