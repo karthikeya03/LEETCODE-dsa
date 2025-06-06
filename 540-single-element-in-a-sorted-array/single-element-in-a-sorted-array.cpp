@@ -7,9 +7,6 @@ public:
         for (int i = 0; i < nums.size(); i+=2) {
             if (i < nums.size() - 1 && nums[i] == nums[i + 1]) {
                 ++count;
-                if (count == 1) {
-                    ans = i;
-                }
             } else {
                 return nums[i]; 
             }
