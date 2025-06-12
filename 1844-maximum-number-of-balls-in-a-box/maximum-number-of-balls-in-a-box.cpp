@@ -13,9 +13,9 @@ public:
             mpp[sum]++;
         }
         int maxx=0;
-        for(auto itt:mpp){
-            if(itt.second>maxx)
-            maxx=itt.second;
+        for(auto num:mpp){
+            if(maxx<num.second)
+            maxx=num.second;
         }
         return maxx;
     }
