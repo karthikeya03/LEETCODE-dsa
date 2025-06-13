@@ -1,18 +1,12 @@
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
-        int index = 0;  // position to place the next non-zero element
-        
-        // Move all non-zero elements to the front
-        for (int i = 0; i < nums.size(); ++i) {
-            if (nums[i] != 0) {
-                nums[index++] = nums[i];
+        int i = 0;
+        for (int j = 0; j < nums.size(); ++j) {
+            if (nums[j] != 0) {
+                swap(nums[i], nums[j]);
+                i++;
             }
-        }
-        
-        // Fill remaining elements with zeros
-        while (index < nums.size()) {
-            nums[index++] = 0;
         }
     }
 };
