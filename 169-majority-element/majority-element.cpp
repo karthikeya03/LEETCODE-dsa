@@ -7,12 +7,9 @@ public:
     {
         if(count==0){
             count=1;
-            el=num;
+            el=num; 
         }
-        else if(num==el)
-        count++;
-        else
-        count--;
+   else (num==el)?count++:count--;
     }
     return el;
     }
