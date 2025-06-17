@@ -1,13 +1,9 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-     unordered_map<char,int>mpp;
-     for(char a:s) mpp[a]++;
-     for(char b:t){
-        mpp[b]--;
-        if(mpp[b]<0)
-        return b;
-     }
-     return -1;
+     char res=0;
+     for(char ch:s) res^=ch;
+     for(char ch:t) res^=ch;
+     return res;
     }
 };
