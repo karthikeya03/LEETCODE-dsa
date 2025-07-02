@@ -1,15 +1,12 @@
 class Solution {
 public:
-    int removeElement(std::vector<int>& nums, int val) {
-        int n=nums.size();
-        int j=0;
-        for(int i=0;i<n;++i){
-            if(nums[i]!=val)
-            {
-               swap(nums[i],nums[j]);
-               j++;
-            }
-        }  
-        return j;
+    int removeElement(vector<int>& nums, int val) {
+        for (auto it = nums.begin(); it != nums.end(); ) {
+            if (*it == val)
+                it = nums.erase(it); 
+            else
+                ++it;
+        }
+        return nums.size();
     }
 };
