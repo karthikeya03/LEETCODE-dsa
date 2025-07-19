@@ -1,17 +1,13 @@
 class Solution {
 public:
     vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
-        unordered_map<int, int> freq;
-        for (int num : nums) {
-            freq[num]++;
-        }
-
         vector<int> result;
-        for (int curr : nums) {
+
+        for (int i = 0; i < nums.size(); ++i) {
             int count = 0;
-            for (auto it : freq) {
-                if (it.first < curr) {
-                    count += it.second;
+            for (int j = 0; j < nums.size(); ++j) {
+                if (nums[j] < nums[i]) {
+                    count++;
                 }
             }
             result.push_back(count);
