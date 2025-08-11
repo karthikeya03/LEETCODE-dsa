@@ -1,21 +1,13 @@
 class Solution {
 public:
     int reverse(int x) {
-        vector<int>result;
-        if(x==0)
-        result.push_back(0);
-        while(x!=0)
-        {
-            result.push_back(x%10);
-            x/=10;
+        int n=x;long long rev=0;
+        while(n!=0){
+            int digit=n%10;
+            rev=rev*10+digit;
+            n=n/10;
         }
-        long nums=0;
-        for(int digit:result)
-        {
-nums=nums*10+digit;
-        if(nums>INT_MAX || nums<INT_MIN)
-        return 0;
-        }
-        return (int)nums;
+        if(rev>INT_MAX || rev<INT_MIN) return 0;
+        return (int)rev;
     }
 };
