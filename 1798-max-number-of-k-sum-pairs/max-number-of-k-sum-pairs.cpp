@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxOperations(vector<int>& nums, int target) {
-        int count=0; int maxx=0;
+        int count=0; 
         sort(nums.begin(),nums.end());
         int i=0,j=nums.size()-1;
         while(i<j){
@@ -14,9 +14,8 @@ public:
             else{
                 i++; j--;
                 count++;
-                maxx=max(count,maxx);
             }
         }
-        return maxx;
+        return count;
     }
 };
