@@ -5,8 +5,8 @@ public:
         int maxx=0;
         for(int i=0;i<nums.size();++i){
             int price=nums[i];
-            if(price<minn)
-            minn=price;
+            if(nums[i]<minn)
+            minn=nums[i];
             int profit=price-minn;
             maxx=max(profit,maxx);
         }
