@@ -3,12 +3,11 @@ public:
     int nextGreatest(vector<int>&nums, int idx){
         int n=nums.size();
         int curr=nums[idx];
-        int index=-1;
-        for(int i=n-1;i>=index;--i){
+        for(int i=n-1;i>idx;--i){
             if(nums[i]>curr)
-            index=i;
+            return i;
         }
-        return index;
+        return -1;
     }
     void nextPermutation(vector<int>& nums) {
         int n=nums.size();
