@@ -1,19 +1,14 @@
-#include <vector>
-#include <algorithm>
-using namespace std;
-
 class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {
         int n=nums.size();
-        vector<int>result;
-        sort(nums.begin(),nums.end());
-        int count=0;
-        for(int i=0;i<n-1;++i)
-        {
-            if(nums[i]==nums[i+1])
-            result.push_back(nums[i]);
+        vector<int>res;
+        unordered_set<int>st;
+        for(int i=0;i<n;++i){
+            if(st.count(nums[i]))
+            res.push_back(nums[i]);
+            st.insert(nums[i]);
         }
-        return result;
+        return res;
     }
 };
