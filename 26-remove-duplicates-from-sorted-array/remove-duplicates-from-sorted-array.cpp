@@ -6,7 +6,7 @@ public:
             if(nums[i]!=nums[j])
             {
                 i++;
-                swap(nums[i],nums[j]);
+                nums[i]=nums[j];
             }
         }
         return i+1;
