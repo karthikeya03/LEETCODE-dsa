@@ -1,8 +1,12 @@
 class Solution {
 public:
     int findMin(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-         int ans = *min_element(nums.begin(), nums.end()); 
-        return ans;
+        int i=0;
+        for(int j=1;j<nums.size();++j){
+            if(nums[j]<nums[i])
+            return nums[j];
+            i++;
+        }
+        return nums[0];
     }
 };
