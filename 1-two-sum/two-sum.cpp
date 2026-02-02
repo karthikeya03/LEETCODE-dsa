@@ -6,7 +6,7 @@ public:
             int ans=target-nums[i];
             if(mpp.count(ans))
             return {mpp[ans],i};
-            mpp.insert({nums[i],i});
+            mpp[nums[i]]=i;
         }
         return {};
     }
