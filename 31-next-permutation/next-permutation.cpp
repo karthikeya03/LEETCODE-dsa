@@ -1,29 +1,28 @@
 class Solution {
 public:
-    int nextGreatest(int idx,vector<int>&nums){
-        for(int i=nums.size()-1;i>=0;--i){
-            if(nums[i]>nums[idx])
+    int nextgreatest(vector<int>&arr, int idx,int n){
+        for(int i=n-1;i>idx;--i){
+            if(arr[i]>arr[idx])
             return i;
         }
         return -1;
     }
-    void nextPermutation(vector<int>& nums) {
-        int n=nums.size();
+    void nextPermutation(vector<int>& arr) {
+        int n=arr.size();
         int idx=-1;
         for(int i=n-2;i>=0;--i){
-            if(nums[i]<nums[i+1])
-            {
+            if(arr[i]<arr[i+1]){
                 idx=i;
                 break;
             }
         }
         if(idx==-1)
         {
-            reverse(nums.begin(),nums.end());
+            sort(arr.begin(),arr.end());
             return;
         }
-        int ans=nextGreatest(idx,nums);
-        swap(nums[idx],nums[ans]);
-        reverse(nums.begin()+idx+1,nums.end());
+        int ans=nextgreatest(arr,idx,n);
+        swap(arr[ans],arr[idx]);
+        reverse(arr.begin()+idx+1,arr.end());
     }
 };
