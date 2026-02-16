@@ -5,7 +5,7 @@ public:
         for(int i=0;i<nums.size();++i){
             int need=target-nums[i];
             if(mpp.count(need))
-            return {mpp[need],i};
+            return {i,mpp[need]};
             mpp[nums[i]]=i;
         }
         return {};
